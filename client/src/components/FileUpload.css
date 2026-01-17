@@ -1,0 +1,111 @@
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    gap: 2rem;
+}
+
+.mascot-welcome {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -40px;
+    /* Overlap slightly with the card */
+    z-index: 10;
+}
+
+.welcome-robot {
+    width: 150px;
+    /* Big mascot */
+    height: auto;
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.15));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(-5deg);
+    }
+}
+
+.upload-zone {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+.upload-zone:hover {
+    border-color: var(--color-primary);
+    background-color: #f0f9ff;
+}
+
+.upload-zone.dragging {
+    border-color: var(--color-primary);
+    background-color: #f0f9ff;
+    transform: scale(1.02);
+}
+
+.file-input {
+    display: none;
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.icon-wrapper {
+    color: var(--color-primary);
+    background-color: #dbeafe;
+    padding: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-wrapper h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.text-wrapper p {
+    margin: 0;
+    color: var(--color-text-light);
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,82 @@
+/* New Layout Styles - Whimsical Mode */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: transparent;
+  /* Handled by body */
+  justify-content: center;
+  padding: 2rem;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  padding: 0;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  height: 90vh;
+  align-items: center;
+}
+
+
+
+/* Header Override */
+.app-header {
+  display: none;
+}
+
+/* Re-enabling header but minimalist if needed. Or user wanted specific mockup. 
+   The mockup has NO global header, just the two panels side-by-side on a white canvas.
+   I will hide the global header to match the mockup exactly. 
+*/
+
+/* Adjust Layout since Header is gone */
+.app-container {
+  padding: 0;
+  background-color: var(--color-bg);
+  justify-content: center;
+}
+
+.upload-view {
+  width: 100%;
+  height: 100%;
+  /* background: white;  REMOVED for landscape */
+  background-image: url('./assets/bg_landscape.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* border-radius: 30px; REMOVED to remove "side colors"/"container" look if meant to be full screen or just transparent container */
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-comic);
+  /* max-width: 800px;  Keep max-width or remove? "remove colors at the sides" might mean make it full width or just transparent. 
+     Let's keep max-width but remove the solid color so it looks like a window into the landscape? 
+     Actually, if I want the landscape to BE the background, it should probably fill the space. 
+     Let's try making it cover the area. */
+  max-width: 100%;
+  /* Allow it to fill the main area */
+  margin: 0 auto;
+  display: flex;
+  /* Center content */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-view {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  /* key line */
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-comic);
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

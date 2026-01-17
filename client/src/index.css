@@ -1,0 +1,77 @@
+:root {
+  /* Vibrant "Kokuyo" inspired palette */
+  --color-bg: #87CEEB;
+  /* Sky Blue Base */
+  --color-surface: #ffffff;
+
+  --color-primary: #4F46E5;
+  /* Deep Indigo for contrast */
+  --color-secondary: #10B981;
+  /* Vivid Green */
+  --color-accent: #fbbf24;
+  /* Amber */
+  --color-pink: #F472B6;
+
+  --color-text: #1e293b;
+  --color-text-light: #64748b;
+
+  --color-border: #e2e8f0;
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-xl: 40px;
+
+  --shadow-comic: 4px 4px 0px 0px rgba(0, 0, 0, 0.15);
+  /* Hard shadow for cartoon feel */
+  --shadow-float: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  /* Whimsical Image Background */
+  background-color: #87CEEB;
+  /* Fallback */
+  background-image: url('./assets/bg-landscape.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Texture overlay to unify it */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.95);
+}
