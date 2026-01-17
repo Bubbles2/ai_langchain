@@ -1,10 +1,12 @@
-const { MemoryVectorStore } = require("@langchain/classic/vectorstores/memory");
+const { PineconeStore } = require("@langchain/pinecone");
+const { Pinecone } = require("@pinecone-database/pinecone");
 const { OpenAIEmbeddings, ChatOpenAI } = require("@langchain/openai");
 const { ChatPromptTemplate } = require("@langchain/core/prompts");
 const { StringOutputParser } = require("@langchain/core/output_parsers");
 
 // Global store
 let vectorStore = null;
+let pineconeClient = null;
 
 // Simple text splitter to avoid import issues
 const splitText = (text, chunkSize = 1000, overlap = 200) => {
@@ -18,14 +20,34 @@ const splitText = (text, chunkSize = 1000, overlap = 200) => {
     return chunks.map(c => ({ pageContent: c, metadata: {} }));
 };
 
-// Initialize Vector Store
+// Initialize Pinecone client
+const initializePinecone = async () => {
+    if (!pineconeClient) {
+        pineconeClient = new Pinecone({
+            apiKey: process.env.PINECONE_API_KEY,
+        });
+    }
+    return pineconeClient;
+};
+
+// Initialize Vector Store with Pinecone
 const initializeVectorStore = async (text) => {
     const splitDocs = splitText(text);
-
     const embeddings = new OpenAIEmbeddings();
 
-    // MemoryVectorStore purely in-memory
-    vectorStore = await MemoryVectorStore.fromDocuments(splitDocs, embeddings);
+    // Initialize Pinecone
+    const pinecone = await initializePinecone();
+    const pineconeIndex = pinecone.Index(process.env.PINECONE_INDEX_NAME);
+
+    // Store documents in Pinecone
+    vectorStore = await PineconeStore.fromDocuments(
+        splitDocs,
+        embeddings,
+        {
+            pineconeIndex,
+            namespace: "pdf-documents", // Optional: organize by namespace
+        }
+    );
 };
 
 const chat = async (question) => {
