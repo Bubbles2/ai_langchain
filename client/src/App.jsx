@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Upload, MessageSquare, FileText, Sparkles, ZoomIn, ZoomOut, Highlighter, Cloud } from 'lucide-react';
 import FileUpload from './components/FileUpload';
 import ChatWindow from './components/ChatWindow';
+import robo from './assets/robo3.png';
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState(null);
   const [fileName, setFileName] = useState('');
+  const [chatWithoutFile, setChatWithoutFile] = useState(false);
 
   const handleFileUpload = async (file) => {
     setIsUploading(true);
@@ -33,6 +35,10 @@ function App() {
     }
   };
 
+  const handleChatWithoutFile = () => {
+    setChatWithoutFile(true);
+  };
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -48,8 +54,14 @@ function App() {
         )}
       </header>
 
+      {/* Robot Chat Button - Fixed in top right */}
+      <button className="chat-without-file-btn" onClick={handleChatWithoutFile}>
+        <img src={robo} alt="Chat with AI" className="robo-image" />
+        <span className="chat-hint">Chat</span>
+      </button>
+
       <main className="app-main">
-        {!fileUploaded ? (
+        {!fileUploaded && !chatWithoutFile ? (
           <div className="upload-view">
             <div className="hero-text">
               <h2>Chat with your PDF</h2>
