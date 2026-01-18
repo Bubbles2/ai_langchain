@@ -41,24 +41,27 @@
 .upload-zone {
     width: 100%;
     max-width: 600px;
-    background-color: rgba(255, 255, 255, 0.85);
-    border: 2px dashed var(--color-border);
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px dashed rgba(255, 255, 255, 0.6);
     border-radius: var(--radius-lg);
     padding: 3rem;
     transition: all 0.2s ease;
     cursor: pointer;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 }
 
 .upload-zone:hover {
-    border-color: var(--color-primary);
-    background-color: #f0f9ff;
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.45);
 }
 
 .upload-zone.dragging {
-    border-color: var(--color-primary);
-    background-color: #f0f9ff;
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.6);
     transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 .file-input {

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { Send, User, Bot, Loader2 } from 'lucide-react';
 import robotMascot from '../assets/robot-mascot.png';
-import bgLandscape from '../assets/bg_landscape.png';
+import bg from '../assets/techback.png';
 import './ChatWindow.css';
 
 const ChatWindow = ({ fileName }) => {
@@ -57,7 +57,7 @@ const ChatWindow = ({ fileName }) => {
         <div
             className="chat-window"
             style={{
-                backgroundImage: `url(${bgLandscape})`,
+                backgroundImage: `url(${bg})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'
