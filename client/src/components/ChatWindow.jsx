@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { Send, User, Bot, Loader2 } from 'lucide-react';
 import robotMascot from '../assets/robot-mascot.png';
-import bg from '../assets/techback.png';
+import bg from '../assets/techbacknew.png';
 import './ChatWindow.css';
 
 const ChatWindow = ({ fileName }) => {
